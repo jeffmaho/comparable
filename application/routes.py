@@ -18,28 +18,25 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
 
-class DataStore():
-    city = None
-    state = None
+# class DataStore():
+#     city = ""
+#     state = ""
 
-data = DataStore()
+#     def __repr__(self):
+#         return "city: " + self.city 
+
+
+# data = DataStore()
 
 @app.route('/api', methods=['GET', 'POST'])
 def api():
     user = {'username': 'Jeff'}
     form = AddressForm()
     if form.validate_on_submit():
-        data.city = request.form.get('City')
-        data.state = request.form.get('State')
-        return redirect(url_for('api_request', city=data.city, state=data.state)
+        city = request.form.get('City')
+        state = request.form.get('State')
+        print(data)
+        api_requested = rental_rates_via_city(data.city, data.state, 'traditional')
+        return render_template('form_submit.html', api_requested=api_requested, user=user)
     return render_template('api.html', title='API', form=form, user=user)
-
-@app.route('/api_request', methods=['GET', 'POST'])
-def api_request(city, state):
-    api_requested = rental_rates_via_city(city, state)
-    user = {'username': 'Jeff'}
-    if request.method == 'GET':
-        pass
-    return render_template('form_submit.html', api_request=api_requested, user=user )
-
 
