@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ user.username }}! Please enter name of city and state that you'd like to get rental pricing on.</h1>
+    
+      <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.city.label }}<br>
+            {{ form.city(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form.state.label }}<br>
+            {{ form.state(size=32) }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    
+    
+{% endblock %}

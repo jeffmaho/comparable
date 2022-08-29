@@ -2,9 +2,9 @@
 <html>
     <head>
       {% if title %}
-      <title>{{ title }} - Comparable </title>
+      <title>{{ title }} - Rentometer </title>
       {% else %}
-      <title>Welcome to Comparable</title>
+      <title>Welcome to Rentometer</title>
       {% endif %}
     </head>
     <body>
@@ -12,6 +12,7 @@
             Comparable: 
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('api') }}">API</a>
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
